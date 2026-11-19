@@ -261,5 +261,8 @@
     if (a && a.getAttribute("href")) p.hidden = false;
   });
 
+  // lets touch screens show the pressed (:active) button state
+  document.addEventListener("touchstart", () => {}, { passive: true });
+
   window.addEventListener("resize", () => { fitDesk(); fitCarousels(); });
 })();

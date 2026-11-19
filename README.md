@@ -29,8 +29,8 @@ Navigation: the menu bar's **Work** tab goes to the UX page; the pills on the ho
 ## Things to fill in
 1. **Screen recordings (UI page)** — Figma can't export video, so the page shows a still frame. Save the videos as
    `assets/video/that-socks.mp4` and `assets/video/motion-carousel.mp4` (MP4/H.264, ideally under 10 MB each); they then play automatically.
-2. **Fanzine pages** — in Figma only the cover is filled in. Save page images to `assets/fanzine/` and list them in
-   `FANZINE.pages` at the top of `script.js` (e.g. `2: "assets/fanzine/page-02.webp"`). Spreads appear once both pages exist; pages 6–7 are one A4 image.
+2. **Fanzine pages** — each view of the page turner is one image in `assets/fanzine/` (front cover, pages 2–3 … 10–11, back cover),
+   exported from the Figma "Zine Page Turner". After changing pages in Figma, re-export the views and replace those files.
 3. **Contact page** — LinkedIn and "Download CV" are hidden until you add them: put your URL into `contact.html`
    (search for `YOUR-PROFILE`) and/or your CV at `assets/cv.pdf`, then remove the `hidden` attribute.
 4. **Live prototype links** — the "Try the live prototype" / "Prototype Link" buttons inside the case-study images aren't clickable.

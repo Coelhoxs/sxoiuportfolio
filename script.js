@@ -4,12 +4,16 @@
   // To receive messages without an email app, swap this for a Formspree endpoint.
   const CONTACT_EMAIL = "sxoiuberlin@gmail.com";
 
-  // Fanzine pages. Put each page image in assets/fanzine/ and write its file name here.
-  // Spreads only appear once both of their pages are filled in. Pages 6–7 are one A4 sheet.
-  const FANZINE = {
-    cover: "assets/fanzine/cover-wrap.webp", // A4 wrap: left half = back cover, right half = front cover
-    pages: { 2: "", 3: "", 4: "", 5: "", "6-7": "", 8: "", 9: "", 10: "", 11: "" },
-  };
+  // Fanzine views, exported from the Figma "Zine Page Turner" (one image per spread).
+  const FANZINE = [
+    { src: "assets/fanzine/front-cover.webp", label: "Front cover", alt: "Idas das Vidas, front cover" },
+    { src: "assets/fanzine/pages-02-03.webp", label: "2 – 3 of 12", alt: "Idas das Vidas, pages 2 and 3" },
+    { src: "assets/fanzine/pages-04-05.webp", label: "4 – 5 of 12", alt: "Idas das Vidas, pages 4 and 5" },
+    { src: "assets/fanzine/pages-06-07.webp", label: "6 – 7 of 12", alt: "Idas das Vidas, pages 6 and 7" },
+    { src: "assets/fanzine/pages-08-09.webp", label: "8 – 9 of 12", alt: "Idas das Vidas, pages 8 and 9" },
+    { src: "assets/fanzine/pages-10-11.webp", label: "10 – 11 of 12", alt: "Idas das Vidas, pages 10 and 11" },
+    { src: "assets/fanzine/back-cover.webp", label: "Back cover", alt: "Idas das Vidas, back cover" },
+  ];
 
   const DESIGN_WIDTH = 1728;
   const CAROUSEL_W = 1063.797, CAROUSEL_H = 645.37;
@@ -200,49 +204,47 @@
     });
   });
 
-  /* ---------- Fanzine page turner ---------- */
+  /* ---------- Fanzine page turner (Figma: Dissolve 300ms ease-out between views) ---------- */
   document.querySelectorAll("[data-zine]").forEach((z) => {
-    const P = FANZINE.pages;
-    const views = [{ label: "Front cover", right: { src: FANZINE.cover, cls: "is-front" } }];
-    [[2, 3], [4, 5], ["6-7"], [8, 9], [10, 11]].forEach((pair) => {
-      if (pair.length === 1 && P[pair[0]]) views.push({ label: "Pages 6–7", wide: { src: P[pair[0]] } });
-      else if (pair.length === 2 && P[pair[0]] && P[pair[1]])
-        views.push({ label: `Pages ${pair[0]}–${pair[1]}`, left: { src: P[pair[0]] }, right: { src: P[pair[1]] } });
-    });
-    views.push({ label: "Back cover", left: { src: FANZINE.cover, cls: "is-back" } });
-
-    const left = z.querySelector(".zine__page--left");
-    const right = z.querySelector(".zine__page--right");
+    const [a, b] = z.querySelectorAll(".zine__spread");
+    const hitL = z.querySelector(".zine__hit--left");
+    const hitR = z.querySelector(".zine__hit--right");
     const prev = z.querySelector(".zine__arrow--prev");
     const next = z.querySelector(".zine__arrow--next");
     const label = z.querySelector(".zine__label");
-    let v = 0;
+    let v = 0, front = a, back = b;
+    // preload every spread so turning is instant
+    FANZINE.forEach((f) => { const i = new Image(); i.src = f.src; });
 
-    const fill = (el, page) => {
-      const img = el.querySelector("img");
-      el.classList.toggle("is-empty", !page);
-      if (page) { img.src = page.src; img.className = page.cls || ""; }
-    };
-    const render = () => {
-      const view = views[v];
-      left.classList.toggle("zine__page--wide", !!view.wide);
-      fill(left, view.wide || view.left);
-      fill(right, view.wide ? null : view.right);
-      label.textContent = view.label;
+    const ui = () => {
+      label.textContent = FANZINE[v].label;
       prev.disabled = v === 0;
-      next.disabled = v === views.length - 1;
+      next.disabled = v === FANZINE.length - 1;
+      hitL.disabled = v === 0;                      // front cover: only the right page turns
+      hitR.disabled = v === FANZINE.length - 1;     // back cover: only the left page turns
     };
     const go = (n) => {
-      if (n < 0 || n >= views.length || n === v) return;
-      z.classList.add("is-turning");
-      setTimeout(() => { v = n; render(); z.classList.remove("is-turning"); }, 220);
+      if (n < 0 || n >= FANZINE.length || n === v) return;
+      v = n;
+      back.src = FANZINE[v].src; back.alt = FANZINE[v].alt; back.removeAttribute("aria-hidden");
+      const swap = () => {
+        back.classList.add("is-current");
+        front.classList.remove("is-current"); front.setAttribute("aria-hidden", "true"); front.alt = "";
+        [front, back] = [back, front];
+      };
+      back.decode ? back.decode().then(swap, swap) : swap();
+      ui();
     };
     prev.addEventListener("click", () => go(v - 1));
     next.addEventListener("click", () => go(v + 1));
-    left.addEventListener("click", () => (views[v].wide ? go(v + 1) : go(v - 1)));
-    right.addEventListener("click", () => go(v + 1));
+    hitL.addEventListener("click", () => go(v - 1));
+    hitR.addEventListener("click", () => go(v + 1));
     swipe(z, (dir) => go(v + dir));
-    render();
+    z.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") go(v + 1);
+      if (e.key === "ArrowLeft") go(v - 1);
+    });
+    ui();
   });
 
   /* ---------- Videos: play when the file exists, otherwise keep the poster ---------- */

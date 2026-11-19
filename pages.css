@@ -127,22 +127,22 @@
 /* ---------- Fanzine page turner ---------- */
 .zine { position: relative; margin: 40px auto 0; width: 100%; max-width: 1200px; }
 .zine__stage { position: relative; margin: 0 auto; width: calc(100% - 200px); aspect-ratio: 1000 / 707; perspective: 2200px; }
-.zine__page {
-  position: absolute; top: 0; width: 50%; height: 100%;
-  background: #fff;
-  box-shadow: 0 24px 48px -8px rgba(0, 0, 0, .22);
-  overflow: hidden;
-  cursor: pointer;
-  transition: opacity .35s, transform .5s cubic-bezier(.4, 0, .2, 1);
+/* Each view is one image exported from Figma (Zine Page Turner variants), cropped to the 1000×707 book area */
+.zine__spread {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 24px 24px rgba(0, 0, 0, .22)); /* Figma page shadow: 0 24 48 -8 */
+  transition: opacity .3s ease-out; /* Figma: Dissolve, 300ms, ease out */
 }
-.zine__page--left { left: 0; transform-origin: right center; }
-.zine__page--right { left: 50%; transform-origin: left center; }
-.zine__page--wide { left: 0; width: 100%; }
-.zine__page.is-empty { opacity: 0; pointer-events: none; }
-.zine__page img { width: 100%; height: 100%; object-fit: cover; }
-.zine__page img.is-front { object-position: right center; }
-.zine__page img.is-back { object-position: left center; }
-.zine.is-turning .zine__page { opacity: .35; }
+.zine__spread.is-current { opacity: 1; }
+.zine__hit { position: absolute; top: 0; width: 50%; height: 100%; z-index: 1; cursor: pointer; }
+.zine__hit--left { left: 0; }
+.zine__hit--right { left: 50%; }
+.zine__hit:disabled { cursor: default; }
+.zine__hit:focus-visible { outline: 2px solid var(--text3); outline-offset: -2px; }
 .zine__arrow {
   position: absolute; top: 50%; z-index: 2;
   width: 64px; height: 64px; margin-top: -40px;

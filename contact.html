@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Sxoiu Coelho</title>
+  <meta name="description" content="Get in touch with Sxoiu Coelho, Product Designer in Berlin.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+<header class="menubar">
+  <nav class="menu" aria-label="Main" style="--tab:2">
+    <span class="menu__indicator"></span>
+    <a class="menu__tab" href="index.html">Home</a>
+    <a class="menu__tab" href="ux.html">Work</a>
+    <a class="menu__tab is-active" href="contact.html" aria-current="page">Contact</a>
+  </nav>
+</header>
+
+<div class="page">
+  
+  <main class="page__main">
+    <div class="contact">
+      <div>
+        <div class="contact__title">
+          <div class="ellipse anim-ellipse-d"><img src="assets/ellipse-desktop.svg" alt=""></div>
+          <h1>Contact</h1>
+          <p>Product Designer · UX/UI</p>
+        </div>
+        <div class="contact__body">
+          <h2>Let’s talk</h2>
+          <p>I’m based in Berlin and open to Product Designer and UX/UI Designer roles. Write to me and I’ll get back to you.</p>
+          <dl class="contact__list">
+            <dt>Email</dt><dd><a href="mailto:sxoiuberlin@gmail.com">sxoiuberlin@gmail.com</a></dd>
+            <!-- LinkedIn: paste your profile URL in both places below, then remove the "hidden" attributes -->
+            <dt data-linkedin hidden>LinkedIn</dt><dd data-linkedin hidden><a href="https://www.linkedin.com/in/YOUR-PROFILE">linkedin.com/in/YOUR-PROFILE</a></dd>
+            <dt>Location</dt><dd>Berlin, Germany</dd>
+          </dl>
+          <div class="contact__actions">
+            <a class="pill" href="mailto:sxoiuberlin@gmail.com">Email me</a>
+            <a class="pill" data-linkedin hidden href="https://www.linkedin.com/in/YOUR-PROFILE">LinkedIn</a>
+            <!-- CV: put your PDF at assets/cv.pdf, then remove "hidden" -->
+            <a class="pill" data-cv hidden href="assets/cv.pdf" download>Download CV</a>
+          </div>
+        </div>
+      </div>
+      <div class="contact__photo"><img src="assets/photo.webp" alt="Portrait of Sxoiu Coelho" width="620" height="268"></div>
+    </div>
+  </main>
+  <div class="footer-bar"></div>
+</div>
+
+<dialog class="lightbox"><img src="" alt=""><button class="lightbox__close" aria-label="Close">×</button></dialog>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UI Showcase — Sxoiu Coelho</title>
+  <meta name="description" content="UI design by Sxoiu Coelho: desktop, mobile and motion.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<header class="menubar">
+  <nav class="menu" aria-label="Main" style="--tab:1">
+    <span class="menu__indicator"></span>
+    <a class="menu__tab" href="index.html">Home</a>
+    <a class="menu__tab is-active" href="ux.html" aria-current="page">Work</a>
+    <a class="menu__tab" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="page">
+  <div class="page__bg" aria-hidden="true"><span style="top:82px"><img src="assets/page-bg.svg" alt=""></span><span style="top:1194px"><img src="assets/page-bg.svg" alt=""></span></div>
+  <main class="page__main">
+<template id="carousel-tpl">
+  <div class="carousel" data-active="2">
+    <div class="carousel__stage">
+      <button class="phone" data-i="0" aria-label="Show screen 1"><span class="phone__screen"><img src="assets/screen1.webp" alt="Reset app – home with History, Activities and Preferences"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="1" aria-label="Show screen 2"><span class="phone__screen"><img src="assets/screen2.webp" alt="Reset app – choose duration"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="2" aria-label="Show screen 3"><span class="phone__screen"><img src="assets/screen3.webp" alt="Reset app – welcome screen with raccoon"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="3" aria-label="Show screen 4"><span class="phone__screen"><img src="assets/screen4.webp" alt="Reset app – Reset Journal gallery"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="4" aria-label="Show screen 5"><span class="phone__screen"><img src="assets/screen5.webp" alt="Reset app – account screen"></span><span class="phone__island"></span></button>
+    </div>
+    <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous screen"><img src="assets/icon-prev.svg" alt=""></button>
+    <button class="carousel__arrow carousel__arrow--next" aria-label="Next screen"><img src="assets/icon-next.svg" alt=""></button>
+    <div class="carousel__dots">
+      <button aria-label="Screen 1"></button><button aria-label="Screen 2"></button><button aria-label="Screen 3"></button><button aria-label="Screen 4"></button><button aria-label="Screen 5"></button>
+    </div>
+  </div>
+</template>
+    <h1 class="h-page h-page--sm">UI Showcase</h1>
+    <p class="lead lead--inter">Interfaces from my projects, on desktop and mobile.</p>
+    <div class="showcase">
+      <header><h2 class="h-section">Desktop UI</h2><p class="sub">That Socks! · e-commerce website (screen recording)</p></header>
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
+        <video data-video muted loop playsinline preload="metadata" poster="assets/ui/that-socks-poster.webp" width="1200" height="803" aria-label="Screen recording of the That Socks! e-commerce website">
+          <source src="assets/video/that-socks.mp4" type="video/mp4">
+        </video>
+      </div>
+
+      <header><h2 class="h-section">Mobile UI</h2><p class="sub">Use the arrows, the dots, or click a phone to browse.</p></header>
+      <div class="carousel-fit" data-carousel data-fit></div>
+
+      <header><h2 class="h-section">Motion</h2><p class="sub">Product carousel built with Figma Motion</p></header>
+      <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div>
+        <video data-video muted loop playsinline preload="metadata" poster="assets/ui/motion-poster.webp" width="1200" height="668" aria-label="NEURA headphone product carousel animation">
+          <source src="assets/video/motion-carousel.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </main>
+  <div class="footer-bar"></div>
+</div>
+
+<dialog class="lightbox"><img src="" alt=""><button class="lightbox__close" aria-label="Close">×</button></dialog>
+<script src="script.js"></script>
+</body>
+</html>

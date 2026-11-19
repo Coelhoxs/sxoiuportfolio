@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sxoiu Coelho — Product Designer</title>
+  <meta name="description" content="Sxoiu Coelho, Product Designer based in Berlin. UX/UI design, illustration and fanzine.">
+  <link rel="icon" href="data:,">
+  <link rel="preload" href="assets/fonts/courier-prime-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+<!-- Carousel template: built once at desktop size, scaled down for phone -->
+<template id="carousel-tpl">
+  <div class="carousel" data-active="2">
+    <div class="carousel__stage">
+      <button class="phone" data-i="0" aria-label="Show screen 1"><span class="phone__screen"><img src="assets/screen1.webp" alt="Reset app – home with History, Activities and Preferences"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="1" aria-label="Show screen 2"><span class="phone__screen"><img src="assets/screen2.webp" alt="Reset app – choose duration"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="2" aria-label="Show screen 3"><span class="phone__screen"><img src="assets/screen3.webp" alt="Reset app – welcome screen with raccoon"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="3" aria-label="Show screen 4"><span class="phone__screen"><img src="assets/screen4.webp" alt="Reset app – Reset Journal gallery"></span><span class="phone__island"></span></button>
+      <button class="phone" data-i="4" aria-label="Show screen 5"><span class="phone__screen"><img src="assets/screen5.webp" alt="Reset app – account screen"></span><span class="phone__island"></span></button>
+    </div>
+    <button class="carousel__arrow carousel__arrow--prev" aria-label="Previous screen"><img src="assets/icon-prev.svg" alt=""></button>
+    <button class="carousel__arrow carousel__arrow--next" aria-label="Next screen"><img src="assets/icon-next.svg" alt=""></button>
+    <div class="carousel__dots">
+      <button aria-label="Screen 1"></button><button aria-label="Screen 2"></button><button aria-label="Screen 3"></button><button aria-label="Screen 4"></button><button aria-label="Screen 5"></button>
+    </div>
+  </div>
+</template>
+
+<!-- Shared contact form -->
+<template id="form-tpl">
+  <form class="form" novalidate>
+    <div class="form__intro">
+      <h3 class="form__title">Let’s work together!</h3>
+      <p class="form__text">I’m open to freelance projects and collaborations, especially in wellness, lifestyle and sports apps. Send me a message and I’ll get back to you.</p>
+    </div>
+    <div class="form__row">
+      <label class="field"><span class="field__label">Name</span><input class="field__input" name="name" placeholder="Your name" autocomplete="name" required></label>
+      <label class="field"><span class="field__label">Email</span><input class="field__input" type="email" name="email" placeholder="your@email.com" autocomplete="email" required></label>
+    </div>
+    <label class="field"><span class="field__label">Message</span><textarea class="field__input field__input--area" name="message" placeholder="Tell me about your project or role…" required></textarea></label>
+    <div class="form__actions">
+      <button type="submit" class="pill">Send message</button>
+      <p class="form__note">I usually reply within 2 days.</p>
+    </div>
+  </form>
+</template>
+
+<!-- ============ MENU BAR (shared) ============ -->
+<header class="menubar">
+  <nav class="menu" aria-label="Main">
+    <span class="menu__indicator"></span>
+    <a class="menu__tab is-active" href="#home" data-target="home">Home</a>
+    <a class="menu__tab" href="#work" data-target="work">Work</a>
+    <a class="menu__tab" href="#contact" data-target="contact">Contact</a>
+  </nav>
+</header>
+
+<!-- ============ DESKTOP (Figma frame 1728px, scaled to viewport) ============ -->
+<div class="desk" aria-hidden="false">
+  <div class="desk__canvas">
+
+    <section class="d-home" data-section="home">
+      <img class="d-home__bg" src="assets/home-bg.svg" alt="">
+      <h1 class="d-headline typewriter">Hello!<br>I’m Sxoiu Coelho, a Product Designer based in Berlin, EU.</h1>
+      <a class="d-photo" href="#contact" data-target="contact" aria-label="About me"><img src="assets/photo.webp" alt="Portrait of Sxoiu Coelho"></a>
+      <div class="d-cursor anim-cursor-d"><img src="assets/cursor-desktop.svg" alt=""></div>
+      <nav class="d-home__menu">
+        <a class="pill" href="ui.html">UI Design</a>
+        <a class="pill pill--full" href="ux.html">UX Case Study</a>
+        <a class="pill pill--full" href="illustrations.html">Illustrations</a>
+        <a class="pill pill--full" href="fanzine.html">Fanzine</a>
+      </nav>
+      <img class="d-freya anim-freya-d" src="assets/freya.webp" alt="">
+    </section>
+
+    <section class="d-work" data-section="work">
+      <div class="d-work__bg"><img src="assets/work-bg-desktop.webp" alt=""></div>
+      <div class="d-work__carousel" data-carousel></div>
+      <nav class="d-work__menu">
+        <a class="pill" href="ux.html">UX Design</a>
+        <a class="pill" href="ui.html">UI Design</a>
+      </nav>
+      <a class="pill d-work__ill-btn" href="illustrations.html">Illustrations</a>
+      <a class="d-work__ill" href="illustrations.html" aria-label="See all illustrations"><img src="assets/illustration.webp" alt="Solarpunk illustration of a meditating alien with bats"></a>
+    </section>
+
+    <section class="d-contact" data-section="contact">
+      <div class="d-contact__ellipse anim-ellipse-d"><img src="assets/ellipse-desktop.svg" alt=""></div>
+      <h2 class="d-contact__title">Contact me</h2>
+      <div class="d-contact__form" data-form></div>
+      <div class="footer-bar d-contact__footer"></div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ============ MOBILE (Figma frame 390px) ============ -->
+<main class="mob">
+  <section class="m-hero" data-section="home">
+    <h1 class="m-headline typewriter">Hello!<br>I’m Sxoiu Coelho, a Product Designer based in Berlin, EU.</h1>
+    <div class="m-portrait">
+      <a class="m-photo" href="#contact" data-target="contact" aria-label="About me"><img src="assets/photo.webp" alt="Portrait of Sxoiu Coelho"></a>
+      <div class="m-cursor anim-cursor-m"><img src="assets/cursor-mobile.svg" alt=""></div>
+      <img class="m-freya anim-freya-m" src="assets/freya.webp" alt="">
+    </div>
+  </section>
+
+  <section class="m-work" data-section="work">
+    <div class="m-work__bg"><img src="assets/work-bg-mobile.webp" alt=""></div>
+    <div class="m-work__inner">
+      <nav class="m-work__top">
+        <a class="pill" href="ui.html">UI</a>
+        <a class="pill" href="ux.html">UX</a>
+      </nav>
+      <div class="m-work__carousel"><div class="m-work__carousel-scale" data-carousel></div></div>
+      <a class="m-work__ill" href="illustrations.html" aria-label="See all illustrations"><img src="assets/illustration.webp" alt="Solarpunk illustration of a meditating alien with bats"></a>
+      <nav class="m-work__art">
+        <a class="pill" href="illustrations.html">Illustrations</a>
+        <a class="pill" href="fanzine.html">Fanzine</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="m-contact" data-section="contact">
+    <div class="m-contact__title">
+      <div class="m-contact__ellipse anim-ellipse-m"><img src="assets/ellipse-mobile.svg" alt=""></div>
+      <h2>Contact me</h2>
+    </div>
+    <div data-form></div>
+  </section>
+  <div class="footer-bar m-footer"></div>
+</main>
+
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fanzine — Idas das Vidas — Sxoiu Coelho</title>
+  <meta name="description" content="Idas das Vidas, a 12-page fanzine of photographs and short poems by Sxoiu Coelho.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+<header class="menubar">
+  <nav class="menu" aria-label="Main" style="--tab:1">
+    <span class="menu__indicator"></span>
+    <a class="menu__tab" href="index.html">Home</a>
+    <a class="menu__tab is-active" href="ux.html" aria-current="page">Work</a>
+    <a class="menu__tab" href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="page">
+  
+  <main class="page__main">
+    <h1 class="h-page">Fanzine</h1>
+    <p class="lead" style="color:var(--text3)">Idas das Vidas · 2025 · 12 pages, A5</p>
+    <p class="sub" style="font-family:var(--font-body);font-weight:500">Click a page or use the arrows to turn the pages.</p>
+
+    <div class="zine" data-zine>
+      <div class="zine__stage">
+        <button class="zine__page zine__page--left" aria-label="Previous page"><img alt=""></button>
+        <button class="zine__page zine__page--right" aria-label="Next page"><img alt=""></button>
+      </div>
+      <button class="zine__arrow zine__arrow--prev" aria-label="Previous spread"><img src="assets/icon-zine-next.svg" alt=""></button>
+      <button class="zine__arrow zine__arrow--next" aria-label="Next spread"><img src="assets/icon-zine-next.svg" alt=""></button>
+      <p class="zine__label" aria-live="polite">Front cover</p>
+    </div>
+
+    <section class="prose" style="margin-top:72px">
+      <h2>About it</h2>
+      <p><em>Idas das Vidas</em> started as a way to hold on to small moments. It brings together my own photographs and short poems across 12 pages, following the cycles of life: growth, loss, return and renewal.</p>
+      <p>The title plays with the comings and goings of a life: the places we leave, the people we lose, and the versions of ourselves we keep coming back to.</p>
+      <p>Where my illustrations imagine a hopeful future, the fanzine stays close to the present. It's quieter and more personal, but it asks the same question: how do we live alongside nature and time?</p>
+      <p>It's printed in A5, made to be held and paged through slowly. It premiered in 2025 at the Fanzine Festival in Palermo, Italy, where it was shown next to my illustrations.</p>
+      <p>For me, the fanzine is a reminder that not everything I make has to be a product or a solution. Some work is simply a space to slow down and notice. That same attention to small, human moments is something I carry into my design work, too.</p>
+    </section>
+  </main>
+  <div class="footer-bar"></div>
+</div>
+
+<dialog class="lightbox"><img src="" alt=""><button class="lightbox__close" aria-label="Close">×</button></dialog>
+<script src="script.js"></script>
+</body>
+</html>

@@ -400,7 +400,8 @@ h1, h2, h3, p { margin: 0; }
   .desk { display: none; }
   .mob { display: flex; flex-direction: column; }
 
-  .menubar { height: 112px; align-items: flex-end; padding-bottom: 10px; }
+  /* Phone Header: 12px above and below the 48px menu */
+  .menubar { height: 72px; }
 
   .m-hero, .m-contact {
     min-height: 852px;
@@ -410,7 +411,7 @@ h1, h2, h3, p { margin: 0; }
   }
   .m-hero > *, .m-contact > * { width: 100%; max-width: 440px; margin-inline: auto; }
 
-  .m-hero { padding: 156px 20px 56px; gap: 28px; position: relative; }
+  .m-hero { padding: 116px 20px 56px; gap: 28px; position: relative; }
   .m-headline {
     font: 700 36px/1.15 var(--font-display);
     letter-spacing: .1753px;

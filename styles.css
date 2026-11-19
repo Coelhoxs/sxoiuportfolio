@@ -132,10 +132,11 @@ h1, h2, h3, p { margin: 0; }
   overflow: hidden;
 }
 .menu__indicator {
+  /* Figma Menu Bar · Indicator: 84×36, centered in its 96px tab (6px inset) */
   position: absolute;
-  top: 4px; left: 4px;
-  width: 96px; height: 40px;
-  border-radius: 20px;
+  top: 6px; left: 10px;
+  width: 84px; height: 36px;
+  border-radius: 18px;
   background: var(--gradient-dusk);
   transform: translateX(calc(var(--tab, 0) * 96px));
   transition: transform .35s cubic-bezier(.4, 0, .2, 1);

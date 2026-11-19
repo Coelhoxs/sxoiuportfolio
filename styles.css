@@ -13,11 +13,10 @@
   --off-white: #fdfcfc;
   --dusk-mauve: #9c8d98;
   --blush: #f8dfdf;
-  --mint: #c9e3c9;
-  /* strokedefault: Figma angular gradient (starts at 3 o'clock, runs counter-clockwise) */
-  --stroke-default: conic-gradient(from 90deg, var(--mint) 0%, var(--blush) 7%, var(--blush) 100%);
-  /* strokehover: #A57B70 → #939EBF */
-  --stroke-hover: conic-gradient(from 90deg, #939ebf 0%, #a57b70 2.8%, #a57b70 100%);
+  /* strokedefault (Figma, Nov 19 update): angular sweep from 3 o'clock, mint → green → dark grey-violet */
+  --stroke-default: conic-gradient(from 90deg, #abdda3 0.0%, #a3d09c 4.17%, #9dc798 8.33%, #99c094 12.5%, #97be93 16.67%, #95bb91 20.83%, #93b890 25.0%, #92b68f 29.17%, #90b38e 33.33%, #8eaf8b 37.5%, #8aa988 41.67%, #84a084 45.83%, #7b917c 50.0%, #738375 54.17%, #6d7b71 58.33%, #6a756e 62.5%, #67716c 66.67%, #666e6b 70.83%, #646c69 75.0%, #626968 79.17%, #606667 83.33%, #5f6265 87.5%, #5b5d62 91.67%, #55535d 95.83%, #abdda3 100%);
+  /* strokehover: angular sweep, grey → warm taupe (64% over the fill) */
+  --stroke-hover: conic-gradient(from 90deg, #b2b8b9 0.0%, #b6bbb8 4.17%, #b6b9b5 8.33%, #b6b8b3 12.5%, #b6b8b2 16.67%, #b6b7b1 20.83%, #b6b7b0 25.0%, #b7b6af 29.17%, #b7b6af 33.33%, #b7b5ad 37.5%, #b7b5ab 41.67%, #b7b3a8 45.83%, #b2aba0 50.0%, #a9a096 54.17%, #a79d92 58.33%, #a79c8f 62.5%, #a69b8e 66.67%, #a69b8e 70.83%, #a69a8d 75.0%, #a79a8c 79.17%, #a79a8b 83.33%, #a7998a 87.5%, #a89888 91.67%, #ac9b87 95.83%, #b2b8b9 100%);
   --text3: #020937;
   --muted: #666b78;
   --ink: #17171c;
@@ -93,7 +92,7 @@ h1, h2, h3, p { margin: 0; }
   transition: opacity .25s;
 }
 .pill::before { background: var(--stroke-default); }
-.pill::after { background: var(--stroke-hover); opacity: 0; }
+.pill::after { inset: -2px; background: var(--stroke-hover); opacity: 0; }
 
 /* Hover + pressed (Figma: "While pressing → Change to hover"):
    fill #EAF2A7 at 80% · text #3A3974 · stroke "strokehover" at 64% · glass effect */
@@ -105,7 +104,7 @@ h1, h2, h3, p { margin: 0; }
   box-shadow: inset 0 4px 4px rgba(12, 26, 61, .25), inset 1px 1px 1px rgba(255, 255, 255, .6), inset -1px -1px 1px rgba(255, 255, 255, .25);
 }
 .pill:hover::before, .pill:focus-visible::before, .pill:active::before { opacity: 0; }
-.pill:hover::after, .pill:focus-visible::after, .pill:active::after { opacity: .64; }
+.pill:hover::after, .pill:focus-visible::after, .pill:active::after { opacity: 1; }
 .pill:active { transform: scale(.97); }
 .pill { -webkit-tap-highlight-color: transparent; }
 .pill--full { width: calc(100% + 4px); padding: 0 12px; }

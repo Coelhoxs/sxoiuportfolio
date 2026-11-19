@@ -356,7 +356,7 @@ h1, h2, h3, p { margin: 0; }
   position: absolute; top: 167px; left: 393px;
   width: 307px;
   padding: 0 31px;
-  display: flex; flex-wrap: wrap; gap: 24px;
+  display: flex; flex-wrap: nowrap; gap: 24px;
 }
 .d-work__ill-btn { position: absolute; top: 167px; left: 1230px; }
 .d-work__ill {
@@ -367,6 +367,18 @@ h1, h2, h3, p { margin: 0; }
   transition: transform .3s, box-shadow .3s;
 }
 .d-work__ill:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(0,0,0,.35); }
+/* Figma: stroke "strokedefault", 4px inside (1px on phone) */
+.d-work__ill::after, .m-work__ill::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 1;
+  padding: 4px;
+  border-radius: inherit;
+  background: var(--stroke-default);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
 .d-work__ill img { position: absolute; top: 0; left: -2.82%; width: 105.64%; height: 100%; max-width: none; }
 
 /* Section / Contact */
@@ -453,7 +465,8 @@ h1, h2, h3, p { margin: 0; }
     width: 270px; height: 382.01px;
     border-radius: 17.273px; overflow: hidden;
   }
-  .m-work__ill img { position: absolute; top: 0; left: -2.82%; width: 105.64%; height: 100%; max-width: none; }
+  .m-work__ill img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .m-work__ill::after { padding: 1px; }
   .m-work__art { position: absolute; top: 764.17px; left: 53px; width: 284px; display: flex; gap: 12px; }
   .m-work__art .pill { width: 136px; padding: 0 8px; }
 

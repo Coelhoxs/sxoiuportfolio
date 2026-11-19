@@ -13,6 +13,11 @@
   --off-white: #fdfcfc;
   --dusk-mauve: #9c8d98;
   --blush: #f8dfdf;
+  --mint: #c9e3c9;
+  /* strokedefault: Figma angular gradient (starts at 3 o'clock, runs counter-clockwise) */
+  --stroke-default: conic-gradient(from 90deg, var(--mint) 0%, var(--blush) 7%, var(--blush) 100%);
+  /* strokehover: #A57B70 → #939EBF */
+  --stroke-hover: conic-gradient(from 90deg, #939ebf 0%, #a57b70 2.8%, #a57b70 100%);
   --text3: #020937;
   --muted: #666b78;
   --ink: #17171c;
@@ -48,27 +53,60 @@ a { color: inherit; text-decoration: none; }
 h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 2px solid var(--text3); outline-offset: 3px; }
 
-/* ---------- Pill button (Button component) ---------- */
+/* ---------- Pill button (Figma: Button component, variants Default + hover) ---------- */
 .pill {
+  /* Default: fill color/dusk-mauve · text color/off-white · stroke "strokedefault" */
+  --pill-fill: var(--dusk-mauve);
+  --pill-text: var(--off-white);
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 44px;
+  /* 44px box + 4px CENTER stroke = 48px visual; -2px margin keeps the 44px layout box */
+  height: 48px;
+  margin: -2px;
   padding: 0 20px;
-  border: 4px solid var(--blush);
+  border: 4px solid transparent;
   border-radius: var(--radius-pill);
-  background: var(--dusk-mauve);
+  background: var(--pill-fill) padding-box;
   box-shadow: inset 0 4px 4px rgba(12, 26, 61, .25);
-  color: var(--off-white);
+  color: var(--pill-text);
   font: 600 16px/24px var(--font-body);
   letter-spacing: .15px;
   font-feature-settings: var(--nums);
   white-space: nowrap;
-  transition: filter .2s, transform .2s;
+  transition: background-color .25s, color .25s, box-shadow .25s;
 }
-.pill:hover { filter: brightness(1.08); transform: translateY(-1px); }
-.pill:active { transform: translateY(0); filter: brightness(.95); }
-.pill--full { width: 100%; padding: 0 12px; }
+/* strokes drawn as rings so they can cross-fade between states */
+.pill::before, .pill::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  padding: 4px;
+  border-radius: inherit;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity .25s;
+}
+.pill::before { background: var(--stroke-default); }
+.pill::after { background: var(--stroke-hover); opacity: 0; }
+
+/* Hover: fill #EAF2A7 at 80% · text #3A3974 · stroke "strokehover" at 64% · glass effect */
+.pill:hover, .pill:focus-visible {
+  --pill-fill: rgba(234, 242, 167, .8);
+  --pill-text: #3a3974;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 4px 4px rgba(12, 26, 61, .25), inset 1px 1px 1px rgba(255, 255, 255, .6), inset -1px -1px 1px rgba(255, 255, 255, .25);
+}
+.pill:hover::before, .pill:focus-visible::before { opacity: 0; }
+.pill:hover::after, .pill:focus-visible::after { opacity: .64; }
+.pill:active { box-shadow: inset 0 5px 6px rgba(12, 26, 61, .32); }
+.pill--full { width: calc(100% + 4px); padding: 0 12px; }
 
 /* ---------- Menu bar (Menu Bar component) ---------- */
 .menubar {

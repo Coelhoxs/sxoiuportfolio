@@ -2,7 +2,7 @@
 (() => {
   // Where the contact form on the home page sends to (opens the visitor's email app).
   // To receive messages without an email app, swap this for a Formspree endpoint.
-  const CONTACT_EMAIL = "sxoiuberlin@gmail.com";
+  const CONTACT_EMAIL = "contactmetowork@gmail.com";
 
   // Fanzine views, exported from the Figma "Zine Page Turner" (one image per spread).
   const FANZINE = [

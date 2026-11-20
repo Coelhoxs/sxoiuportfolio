@@ -279,3 +279,20 @@
   .study__link--mobile-only { display: flex; }
   .study__link--desktop-only { display: none; }
 }
+
+/* ---------- UI page (Figma "UI" / "UI – Phone", no page title) ---------- */
+.ui-block { display: flex; flex-direction: column; gap: 30px; }
+.ui-block .h-section { font-size: 32px; line-height: 1; }
+.ui-block .sub { font-size: 18px; }
+.showcase { margin-top: 79px; gap: 72px; }
+.showcase > section > header { margin-top: 0; }
+.only-m { display: none; }
+@media (max-width: 820px) {
+  .only-d { display: none; }
+  .only-m { display: inline; }
+  .showcase { margin-top: 0; gap: 26px; }
+  .ui-block { gap: 20px; }
+  .ui-block .h-section { font-size: 24px; }
+  .ui-block .sub { font-size: 16px; margin-top: 4px; }
+  .ui-block--mobile { order: -1; } /* phone: Mobile UI first */
+}

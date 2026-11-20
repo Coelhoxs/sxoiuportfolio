@@ -422,13 +422,14 @@ h1, h2, h3, p { margin: 0; }
   }
   .m-hero > *, .m-contact > * { width: 100%; max-width: 440px; margin-inline: auto; }
 
-  .m-hero { padding: 116px 20px 56px; gap: 28px; position: relative; }
+  /* fit the visible screen (in-app browsers are shorter than 852px) and keep the content centred in it */
+  .m-hero { padding: 104px 20px 40px; gap: 28px; position: relative; min-height: 100vh; min-height: 100svh; }
   .m-headline {
     font: 700 36px/1.15 var(--font-display);
     letter-spacing: .1753px;
     color: var(--text3);
   }
-  .m-portrait { position: relative; height: 182.164px; max-width: 350px !important; }
+  .m-portrait { position: relative; height: 182.164px; width: 341px !important; max-width: 341px !important; margin-inline: auto !important; }
   .m-photo { position: absolute; top: 64.08px; left: 132px; width: 208.772px; height: 113.255px; }
   .m-photo img { position: absolute; top: 9.55px; left: 13.65px; width: 180.977px; height: 94.152px; object-fit: cover; object-position: bottom; }
   .m-cursor { position: absolute; top: 150.05px; left: 316.21px; width: 30.702px; height: 32.229px; pointer-events: none; }

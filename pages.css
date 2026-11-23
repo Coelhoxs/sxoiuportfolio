@@ -143,7 +143,8 @@
 .arc__card:not(.is-front):hover { --s: 1.06; }
 .arc__card.no-anim { transition: none; }
 .arc__bar { position: relative; z-index: 20; margin-top: -150px; display: flex; align-items: center; justify-content: center; gap: 28px; }
-.arc__count { font: 700 30px/1.2 var(--font-display); color: #01092f; min-width: 150px; }
+.arc__title { font: 700 28px/1.2 var(--font-display); color: #01092f; min-width: 280px; }
+.arc__count { margin-top: 8px; font: 500 14px/1.4 var(--font-body); color: #6b6b7a; letter-spacing: .04em; }
 .arc__arrow {
   width: 44px; height: 44px; border-radius: 22px;
   background: #fff; border: 1px solid #d9d9e0;
@@ -162,7 +163,8 @@
   .arc__stage { height: 330px; }
   .arc__card { top: calc(var(--r) + 100px); border-radius: 9px; }
   .arc__bar { margin-top: -60px; gap: 18px; }
-  .arc__count { font-size: 22px; min-width: 100px; }
+  .arc__title { font-size: 19px; min-width: 0; max-width: 220px; }
+  .arc__count { font-size: 12px; }
   .arc__arrow { width: 38px; height: 38px; font-size: 19px; }
   .arc__hint { font-size: 13px; }
   .arc + .prose { margin-top: 44px; }

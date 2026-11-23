@@ -204,6 +204,52 @@
     });
   });
 
+  /* ---------- Illustration arc carousel (cards ride an arc; the front one opens full size) ---------- */
+  document.querySelectorAll("[data-arc]").forEach((arc) => {
+    const cards = [...arc.querySelectorAll(".arc__card")];
+    const n = cards.length;
+    const count = arc.querySelector(".arc__count");
+    const dotsBox = arc.querySelector(".arc__dots");
+    const dots = cards.map(() => dotsBox.appendChild(document.createElement("span")));
+    const half = Math.floor(n / 2);
+    const offs = cards.map(() => null);
+    let i = 0;
+    const go = (target) => {
+      i = ((target % n) + n) % n;
+      cards.forEach((c, k) => {
+        let off = (((k - i) % n) + n) % n;
+        if (off > half) off -= n;
+        const prev = offs[k];
+        const wrap = prev !== null && Math.abs(off - prev) > half;
+        if (wrap) { c.classList.add("no-anim"); c.style.opacity = 0; }
+        c.style.setProperty("--off", off);
+        c.style.setProperty("--s", off === 0 ? "var(--front)" : "");
+        c.style.setProperty("--z", 10 - Math.abs(off));
+        c.classList.toggle("is-front", off === 0);
+        c.tabIndex = off === 0 ? 0 : -1;
+        const op = Math.abs(off) >= 3 ? 0.4 : 1;
+        if (wrap) { void c.offsetWidth; c.classList.remove("no-anim"); }
+        c.style.opacity = op;
+        offs[k] = off;
+      });
+      dots.forEach((d, k) => d.classList.toggle("is-active", k === i));
+      count.textContent = `${String(i + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
+    };
+    cards.forEach((c, k) => c.addEventListener("click", () => {
+      if (k === i) openLightbox(c.dataset.full, c.querySelector("img").alt);
+      else go(k);
+    }));
+    arc.querySelector(".arc__arrow--prev").addEventListener("click", () => go(i - 1));
+    arc.querySelector(".arc__arrow--next").addEventListener("click", () => go(i + 1));
+    swipe(arc.querySelector(".arc__stage"), (dir) => go(i + dir));
+    document.addEventListener("keydown", (e) => {
+      if (dlg && dlg.open) return;
+      if (e.key === "ArrowRight") go(i + 1);
+      if (e.key === "ArrowLeft") go(i - 1);
+    });
+    go(0);
+  });
+
   /* ---------- Fanzine page turner (Figma: Dissolve 300ms ease-out between views) ---------- */
   document.querySelectorAll("[data-zine]").forEach((z) => {
     const [a, b] = z.querySelectorAll(".zine__spread");

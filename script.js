@@ -210,6 +210,7 @@
     const n = cards.length;
     const count = arc.querySelector(".arc__count");
     const title = arc.querySelector(".arc__title");
+    const link = arc.querySelector(".arc__link");
     const dotsBox = arc.querySelector(".arc__dots");
     const dots = cards.map(() => dotsBox.appendChild(document.createElement("span")));
     const half = Math.floor(n / 2);
@@ -236,6 +237,11 @@
       dots.forEach((d, k) => d.classList.toggle("is-active", k === i));
       count.textContent = `${String(i + 1).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
       if (title) title.textContent = cards[i].dataset.title || "";
+      if (link) {
+        const href = cards[i].dataset.link;
+        link.hidden = !href;
+        if (href) { link.href = href; link.textContent = cards[i].dataset.linkLabel || "Open"; }
+      }
     };
     cards.forEach((c, k) => c.addEventListener("click", () => {
       if (k === i) openLightbox(c.dataset.full, c.querySelector("img").alt);

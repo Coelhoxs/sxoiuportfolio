@@ -144,6 +144,8 @@
 .arc__card.no-anim { transition: none; }
 .arc__bar { position: relative; z-index: 20; margin-top: -150px; display: flex; align-items: center; justify-content: center; gap: 28px; }
 .arc__title { font: 700 28px/1.2 var(--font-display); color: #01092f; min-width: 280px; }
+.arc__link { display: inline-flex; margin-top: 14px; }
+.arc__link[hidden] { display: none; }
 .arc__count { margin-top: 8px; font: 500 14px/1.4 var(--font-body); color: #6b6b7a; letter-spacing: .04em; }
 .arc__arrow {
   width: 44px; height: 44px; border-radius: 22px;
